@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+dependency-reduced-pom.xml
+src/.DS_Store
+src/main/.DS_Store
+sysout_1.log
+target/
+testing-ib.iml
