@@ -3,6 +3,7 @@ package testbed.contracts;
 import java.util.ArrayList;
 import com.ib.client.ComboLeg;
 import com.ib.client.Contract;
+import com.ib.client.Types;
 
 public class ContractSamples {
 
@@ -130,14 +131,17 @@ public class ContractSamples {
 		//! [optcontract_localsymbol]
 		Contract contract = new Contract();
 		//Watch out for the spaces within the local symbol!
-		contract.localSymbol("C DBK  DEC 20  1600");
+		contract.localSymbol("SPX   161216C02000000");
+//		contract.right(cp);
+//		contract.strike(2000);
+//		contract.lastTradeDateOrContractMonth("20161215");
 		contract.secType("OPT");
-		contract.exchange("DTB");
-		contract.currency("EUR");
+		contract.currency("USD");
+		contract.exchange("SMART");
 		//! [optcontract_localsymbol]
 		return contract;
 	}
-	
+
 	public static Contract SimpleFuture() {
 		//! [futcontract]
 		Contract contract = new Contract();
@@ -220,14 +224,25 @@ public class ContractSamples {
 	public static Contract OptionForQuery() {
 		//! [optionforquery]
 		Contract contract = new Contract();
-		contract.symbol("FISV");
+		contract.symbol("SPX");
 		contract.secType("OPT");
 		contract.currency("USD");
 		contract.exchange("SMART");
 		//! [optionforquery]
 		return contract;
 	}
-	
+
+	public static Contract IndexForQuery() {
+		//! [optionforquery]
+		Contract contract = new Contract();
+		contract.symbol("SPX");
+		contract.secType("IND");
+		contract.currency("USD");
+		contract.exchange("CBOE");
+		//! [optionforquery]
+		return contract;
+	}
+
 	public static Contract OptionComboContract() {
 		//! [bagoptcontract]
 		Contract contract = new Contract();
@@ -372,5 +387,21 @@ public class ContractSamples {
 		//! [newscontractmt]
 		return contract;
 	}
-	
+
+	public static Contract IndexThing() {
+		//! [indcontract]
+		Contract contract = new Contract();
+		//Watch out for the spaces within the local symbol!
+		contract.symbol("SPX");
+//		contract.right(cp);
+//		contract.strike(2000);
+//		contract.lastTradeDateOrContractMonth("20161215");
+		contract.secType("IND");
+		contract.currency("USD");
+		contract.exchange("CBOE");
+		//! [optcontract_localsymbol]
+		return contract;
+
+
+	}
 }

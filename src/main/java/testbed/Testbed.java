@@ -48,13 +48,22 @@ public class Testbed {
         //bracketSample(wrapper.getClient(), wrapper.getCurrentOrderId());
         //bulletins(wrapper.getClient());
         //reutersFundamentals(wrapper.getClient());
-        marketDataType(wrapper.getClient());
-        historicalDataRequests(wrapper.getClient());
-        //accountOperations(wrapper.getClient());
+//        marketDataType(wrapper.getClient());
+//        historicalDataRequests(wrapper.getClient());
+
+//        ExecutionFilter filter = new ExecutionFilter();
+//        filter.time("20160515");
+//        filter.acctCode("U1592819");
+//        wrapper.getClient().reqAccountUpdates(true, "U1592819");
+//        wrapper.getClient().reqRealTimeBars(3001, ContractSamples.OptionWithLocalSymbol(), 5, "MIDPOINT", true, null);
+//        wrapper.getClient().reqMktData(1002, ContractSamples.OptionWithLocalSymbol(), "587", false, null);
+//        wrapper.getClient().cancelMktData(1002);
+        Thread.sleep(1000);
+//        accountOperations(wrapper.getClient());
 //        tickDataOperations(wrapper.getClient());
 
 
-        Thread.sleep(100000);
+        Thread.sleep(4000);
         m_client.eDisconnect();
     }
 
@@ -176,10 +185,11 @@ public class Testbed {
 //        //! [reqmktdata_broadtapenews]
 //        //! [reqoptiondatagenticks]
 //        //Requesting data for an option contract will return the greek values
-        client.reqMktData(1002, ContractSamples.OptionWithLocalSymbol(), "", false, null);
+        client.reqMktData(1002, ContractSamples.OptionWithLocalSymbol(), "106", false, null);
+//        client.reqMktData(1002, ContractSamples.OptionWithLocalSymbol(), "106", false, null);
 //        //! [reqoptiondatagenticks]
 
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         //! [cancelmktdata]
 //        client.cancelMktData(1001);
         client.cancelMktData(1002);
@@ -237,29 +247,29 @@ public class Testbed {
     private static void accountOperations(EClientSocket client) throws InterruptedException {
 
         //client.reqAccountUpdatesMulti(9002, null, "EUstocks", true);
-        client.reqPositionsMulti(9003, "DU74649", "EUstocks");
-        Thread.sleep(10000);
+//        client.reqPositionsMulti(9003, "DU74649", "EUstocks");
+//        Thread.sleep(10000);
 
         /*** Requesting managed accounts***/
         //! [reqmanagedaccts]
-        client.reqManagedAccts();
+//        client.reqManagedAccts();
         //! [reqmanagedaccts]
         /*** Requesting accounts' summary ***/
-        Thread.sleep(2000);
-        //! [reqaaccountsummary]
+//        Thread.sleep(2000);
+//        //! [reqaaccountsummary]
         client.reqAccountSummary(9001, "All", "AccountType,NetLiquidation,TotalCashValue,SettledCash,AccruedCash,BuyingPower,EquityWithLoanValue,PreviousEquityWithLoanValue,GrossPositionValue,ReqTEquity,ReqTMargin,SMA,InitMarginReq,MaintMarginReq,AvailableFunds,ExcessLiquidity,Cushion,FullInitMarginReq,FullMaintMarginReq,FullAvailableFunds,FullExcessLiquidity,LookAheadNextChange,LookAheadInitMarginReq ,LookAheadMaintMarginReq,LookAheadAvailableFunds,LookAheadExcessLiquidity,HighestSeverity,DayTradesRemaining,Leverage");
-        //! [reqaaccountsummary]
-        /*** Subscribing to an account's information. Only one at a time! ***/
+//        //! [reqaaccountsummary]
+//        /*** Subscribing to an account's information. Only one at a time! ***/
         Thread.sleep(2000);
-        //! [reqaaccountupdates]
-        client.reqAccountUpdates(true, "U150462");
-        //! [reqaaccountupdates]
-        //! [reqaaccountupdatesmulti]
-        client.reqAccountUpdatesMulti(9002, "U150462", "EUstocks", true);
-        //! [reqaaccountupdatesmulti]
-        Thread.sleep(2000);
-        /*** Requesting all accounts' positions. ***/
-        //! [reqpositions]
+//        //! [reqaaccountupdates]
+//        client.reqAccountUpdates(true, "U150462");
+//        //! [reqaaccountupdates]
+//        //! [reqaaccountupdatesmulti]
+//        client.reqAccountUpdatesMulti(9002, "U150462", "EUstocks", true);
+//        //! [reqaaccountupdatesmulti]
+//        Thread.sleep(2000);
+//        /*** Requesting all accounts' positions. ***/
+//        //! [reqpositions]
         client.reqPositions();
         //! [reqpositions]
 
@@ -294,7 +304,8 @@ public class Testbed {
     private static void contractOperations(EClientSocket client) {
 
         //! [reqcontractdetails]
-        client.reqContractDetails(210, ContractSamples.OptionForQuery());
+        client.reqContractDetails(210, ContractSamples.IndexForQuery());
+//        client.reqContractDetails(210, ContractSamples.OptionForQuery());
         //! [reqcontractdetails]
 
     }
